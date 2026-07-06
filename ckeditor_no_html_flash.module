@@ -1,0 +1,37 @@
+<?php
+
+
+
+
+function ckeditor_no_html_flash_form_alter(&$form, $form_state, $form_id) {
+
+  // Add our JS file on only those forms with a #type => text_format element.    
+  if (_ckeditor_no_html_flash_form_has_text_format($form) == TRUE) {    
+    $form['#attached']['js'][] = backdrop_get_path("module", "ckeditor_no_html_flash") . "/js/nohtmlflash.js";
+  }
+  
+}
+
+
+/**
+ * Pass this an element or $form to determine if there are any elements, nested or otherwise, which
+ * contain a #type of 'text_format'.
+ * 
+ * @param array $element
+ * @return boolean
+ */
+function _ckeditor_no_html_flash_form_has_text_format(array $element) {
+  if (!empty($element['#type']) && $element['#type'] === 'text_format') {
+    return TRUE;
+  }
+  
+  foreach ($element as $key => $child) {
+    if ((is_numeric($key) || $key[0] !== '#') && is_array($child)) {
+      if (_ckeditor_no_html_flash_form_has_text_format($child)) {
+        return TRUE;
+      }
+    }
+  }
+  
+  return FALSE;
+}

@@ -1,0 +1,5 @@
+name = CKEditor no HTML flash
+type = module
+description = Prevents the flash of visible HTML in CKEditor 5 when a form is saved. See README.md for details.
+package = User Interface
+backdrop = 1.x 
