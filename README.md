@@ -9,6 +9,10 @@ This 25-second video demonstrates the undesired behavior on a clean install:
 
 https://github.com/user-attachments/assets/e828b83d-5524-4ba9-86e5-a9b518b40d9d
 
+
+Why Does This Happen?
+---------------------
+
 This is caused by the editor being destroyed while "detaching", which is not needed
 during a page submit, only when switching between other text formats & editors. The "destroy"
 command removes the editor, leaving a plain textarea with visible HTML.
@@ -29,7 +33,6 @@ javascript variable.
 Also, we override core's code for "detach" of CKEditor5 to first check for this javascript variable. If
 the form is in the process of being submitted, we do **not** destroy the editor, thereby preventing
 the flash of plain HTML.
-
 
 
 Usage
