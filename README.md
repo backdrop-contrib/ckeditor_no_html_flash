@@ -2,16 +2,21 @@ CKEditor No HTML FLash
 =======================
 
 This module fixes a UX issue in core's implementation of the CKEditor5 module. When the user saves
-a form using CKEditor5, there is a "flash" of plain HTML right when the form is submitted.
+a form using CKEditor5, there is a "flash" of plain HTML when the form is submitted. This may
+be confusing or appear sloppy to users of the system.
 
-This 25-second video demonstrates the behavior on a clean install:
+This 25-second video demonstrates the undesired behavior on a clean install:
 
 https://github.com/user-attachments/assets/e828b83d-5524-4ba9-86e5-a9b518b40d9d
 
+This is caused by the editor being destroyed while "detaching", which is not needed
+during a page submit, only when switching between other text formats & editors. The "destroy"
+command removes the editor, leaving a plain textarea with visible HTML.
+
 There is currently an issue in core which addresses the problem. This module is meant to be a
-workaround until that PR is merged (if accepted).  
-The core issue URL is: https://github.com/backdrop/backdrop-issues/issues/7149. If this PR
-is ever merged and released, this module will be marked as deprecated.
+workaround until that PR is merged (if accepted).  The core issue URL is: 
+https://github.com/backdrop/backdrop-issues/issues/7149. If the related PR
+is ever merged with core, this module will be marked as deprecated.
 
 
 
