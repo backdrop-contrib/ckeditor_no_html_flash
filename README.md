@@ -1,5 +1,5 @@
 ## ⚠️ DEPRECATED
-This issue has now been fixed in core, as of version 1.43.3, making this module no longer necessary.
+This issue has now been fixed in core, as of version 1.34.3, making this module no longer necessary.
 
 
 Original README.md:
